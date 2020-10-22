@@ -1,0 +1,29 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: '/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/reid_template/resnet50-19c8e357.pth'
+
+INPUT:
+  SIZE_TRAIN: [128, 128]
+  SIZE_TEST: [128, 128]
+
+DATASETS:
+  NAMES: ('ltcc_orig') # shapes_varcolor, shapes_fixcolor, ltcc_noneID, ltcc_orig
+  ROOT_DIR: ('/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/B_DATASETS/Long_term_datasets/LTCC_ReID/LTCC_orig')
+
+DATALOADER:
+  SAMPLER: 'softmax'
+
+SOLVER:
+  MAX_EPOCHS: 120
+  IMS_PER_BATCH: 128
+  CHECKPOINT_PERIOD: 10
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 10
+
+TEST:
+  IMS_PER_BATCH: 128
+  WEIGHT: "path"
+
+OUTPUT_DIR: "/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/reid_template/OUTPUT/simple_baseline"
+
+

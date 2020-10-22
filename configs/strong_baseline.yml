@@ -1,0 +1,44 @@
+MODEL:
+  PRETRAIN_PATH: '/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/LTCCscript_N3/resnet50-19c8e357.pth'
+  NECK: 'bnneck'
+  IF_LABELSMOOTH: 'on'
+
+INPUT:
+  SIZE_TRAIN: [128, 128]
+  SIZE_TEST: [128, 128]
+  PADDING : 10
+
+DATASETS:
+  NAMES: ('ltcc_orig') # shapes_varcolor, shapes_fixcolor, ltcc_noneID, ltcc_orig
+
+DATALOADER:
+  SAMPLER: 'softmax'
+  Aug: True
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 120
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 128
+
+  STEPS: [30, 55]
+  GAMMA: 0.1
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 5
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 10
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 10
+
+TEST:
+  IMS_PER_BATCH: 128
+  NECK_FEAT: 'after'
+
+OUTPUT_DIR: "/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/reid_template/OUTPUT/strong_baseline"
+
+

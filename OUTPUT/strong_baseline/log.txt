@@ -1,0 +1,461 @@
+2020-10-22 13:55:26,373 clothing change re-id INFO: Using 1 GPUS
+2020-10-22 13:55:26,373 clothing change re-id INFO: Namespace(config_file='../configs/strong_baseline.yml', opts=[])
+2020-10-22 13:55:26,373 clothing change re-id INFO: Loaded configuration file ../configs/strong_baseline.yml
+2020-10-22 13:55:26,373 clothing change re-id INFO: 
+MODEL:
+  PRETRAIN_PATH: '/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/LTCCscript_N3/resnet50-19c8e357.pth'
+  NECK: 'bnneck'
+  IF_LABELSMOOTH: 'on'
+
+INPUT:
+  SIZE_TRAIN: [128, 128]
+  SIZE_TEST: [128, 128]
+  PADDING : 10
+
+DATASETS:
+  NAMES: ('ltcc_orig') # shapes_varcolor, shapes_fixcolor, ltcc_noneID, ltcc_orig
+
+DATALOADER:
+  SAMPLER: 'softmax'
+  Aug: True
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 120
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 128
+
+  STEPS: [30, 55]
+  GAMMA: 0.1
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 5
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 10
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 10
+
+TEST:
+  IMS_PER_BATCH: 128
+  NECK_FEAT: 'after'
+
+OUTPUT_DIR: "/media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/reid_template/OUTPUT/strong_baseline"
+
+
+
+2020-10-22 13:55:26,373 clothing change re-id INFO: Running with config:
+DATALOADER:
+  Aug: True
+  IDsampler: False
+  NUM_INSTANCE: 16
+  NUM_WORKERS: 8
+  SAMPLER: softmax
+DATASETS:
+  NAMES: ltcc_orig
+  ROOT_DIR: set it in the .yml file
+  multiple: False
+INPUT:
+  PADDING: 10
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  PROB: 0.5
+  RE_PROB: 0.5
+  SIZE_TEST: [128, 128]
+  SIZE_TRAIN: [128, 128]
+MODEL:
+  DEVICE: cuda
+  DEVICE_ID: 0
+  Evaluate: both
+  IF_LABELSMOOTH: on
+  IF_WITH_CENTER: no
+  LAST_STRIDE: 1
+  METRIC_LOSS_TYPE: triplet
+  NAME: resnet50
+  NECK: bnneck
+  PRETRAIN_CHOICE: imagenet
+  PRETRAIN_PATH: /media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/LTCCscript_N3/resnet50-19c8e357.pth
+OUTPUT_DIR: /media/socialab157/2cbae9f1-6394-4fa9-b963-5ef890eee044/A_PROJECTS/LOCAL/cvpr2021/reid_template/OUTPUT/strong_baseline
+SOLVER:
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  CENTER_LOSS_WEIGHT: 0.0005
+  CENTER_LR: 0.5
+  CHECKPOINT_PERIOD: 10
+  CLUSTER_MARGIN: 0.3
+  EVAL_PERIOD: 10
+  GAMMA: 0.1
+  IMS_PER_BATCH: 128
+  LOG_PERIOD: 10
+  MARGIN: 0.3
+  MAX_EPOCHS: 120
+  MOMENTUM: 0.9
+  OPTIMIZER_NAME: Adam
+  RANGE_ALPHA: 0
+  RANGE_BETA: 1
+  RANGE_K: 2
+  RANGE_LOSS_WEIGHT: 1
+  RANGE_MARGIN: 0.3
+  STEPS: (30, 55)
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 5
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+TEST:
+  FEAT_NORM: no
+  IMS_PER_BATCH: 128
+  NECK_FEAT: after
+  RE_RANKING: no
+  WEIGHT: set/the/path/in/.yml/file
+2020-10-22 13:55:26,848 clothing change re-id INFO: Start training
+2020-10-22 13:55:33,335 clothing change re-id INFO: Epoch[1] Iteration[10/75] Loss: 4.339, Acc: 0.033, Base Lr: 7.28e-05
+2020-10-22 13:55:35,374 clothing change re-id INFO: Epoch[1] Iteration[20/75] Loss: 4.311, Acc: 0.060, Base Lr: 7.28e-05
+2020-10-22 13:55:37,417 clothing change re-id INFO: Epoch[1] Iteration[30/75] Loss: 4.251, Acc: 0.092, Base Lr: 7.28e-05
+2020-10-22 13:55:39,476 clothing change re-id INFO: Epoch[1] Iteration[40/75] Loss: 4.149, Acc: 0.127, Base Lr: 7.28e-05
+2020-10-22 13:55:41,567 clothing change re-id INFO: Epoch[1] Iteration[50/75] Loss: 4.009, Acc: 0.162, Base Lr: 7.28e-05
+2020-10-22 13:55:43,616 clothing change re-id INFO: Epoch[1] Iteration[60/75] Loss: 3.828, Acc: 0.200, Base Lr: 7.28e-05
+2020-10-22 13:55:45,620 clothing change re-id INFO: Epoch[1] Iteration[70/75] Loss: 3.622, Acc: 0.237, Base Lr: 7.28e-05
+2020-10-22 13:55:48,627 clothing change re-id INFO: Epoch 1 done. Time per batch: 18.885[s] Speed: 508.3[samples/s]
+2020-10-22 13:55:48,627 clothing change re-id INFO: ----------
+2020-10-22 13:55:51,197 clothing change re-id INFO: Epoch[2] Iteration[10/75] Loss: 2.315, Acc: 0.463, Base Lr: 1.42e-04
+2020-10-22 13:55:53,234 clothing change re-id INFO: Epoch[2] Iteration[20/75] Loss: 2.239, Acc: 0.479, Base Lr: 1.42e-04
+2020-10-22 13:55:55,279 clothing change re-id INFO: Epoch[2] Iteration[30/75] Loss: 2.122, Acc: 0.504, Base Lr: 1.42e-04
+2020-10-22 13:55:57,345 clothing change re-id INFO: Epoch[2] Iteration[40/75] Loss: 1.994, Acc: 0.532, Base Lr: 1.42e-04
+2020-10-22 13:55:59,472 clothing change re-id INFO: Epoch[2] Iteration[50/75] Loss: 1.856, Acc: 0.565, Base Lr: 1.42e-04
+2020-10-22 13:56:01,518 clothing change re-id INFO: Epoch[2] Iteration[60/75] Loss: 1.731, Acc: 0.591, Base Lr: 1.42e-04
+2020-10-22 13:56:03,502 clothing change re-id INFO: Epoch[2] Iteration[70/75] Loss: 1.619, Acc: 0.615, Base Lr: 1.42e-04
+2020-10-22 13:56:04,489 clothing change re-id INFO: Epoch 2 done. Time per batch: 14.709[s] Speed: 652.7[samples/s]
+2020-10-22 13:56:04,489 clothing change re-id INFO: ----------
+2020-10-22 13:56:07,063 clothing change re-id INFO: Epoch[3] Iteration[10/75] Loss: 0.869, Acc: 0.776, Base Lr: 2.11e-04
+2020-10-22 13:56:09,106 clothing change re-id INFO: Epoch[3] Iteration[20/75] Loss: 0.852, Acc: 0.780, Base Lr: 2.11e-04
+2020-10-22 13:56:11,151 clothing change re-id INFO: Epoch[3] Iteration[30/75] Loss: 0.837, Acc: 0.785, Base Lr: 2.11e-04
+2020-10-22 13:56:13,207 clothing change re-id INFO: Epoch[3] Iteration[40/75] Loss: 0.811, Acc: 0.793, Base Lr: 2.11e-04
+2020-10-22 13:56:15,353 clothing change re-id INFO: Epoch[3] Iteration[50/75] Loss: 0.785, Acc: 0.800, Base Lr: 2.11e-04
+2020-10-22 13:56:17,399 clothing change re-id INFO: Epoch[3] Iteration[60/75] Loss: 0.760, Acc: 0.805, Base Lr: 2.11e-04
+2020-10-22 13:56:19,386 clothing change re-id INFO: Epoch[3] Iteration[70/75] Loss: 0.735, Acc: 0.810, Base Lr: 2.11e-04
+2020-10-22 13:56:20,374 clothing change re-id INFO: Epoch 3 done. Time per batch: 14.729[s] Speed: 651.8[samples/s]
+2020-10-22 13:56:20,375 clothing change re-id INFO: ----------
+2020-10-22 13:56:23,130 clothing change re-id INFO: Epoch[4] Iteration[10/75] Loss: 0.461, Acc: 0.893, Base Lr: 2.81e-04
+2020-10-22 13:56:25,177 clothing change re-id INFO: Epoch[4] Iteration[20/75] Loss: 0.465, Acc: 0.887, Base Lr: 2.81e-04
+2020-10-22 13:56:27,223 clothing change re-id INFO: Epoch[4] Iteration[30/75] Loss: 0.471, Acc: 0.884, Base Lr: 2.81e-04
+2020-10-22 13:56:29,328 clothing change re-id INFO: Epoch[4] Iteration[40/75] Loss: 0.479, Acc: 0.880, Base Lr: 2.81e-04
+2020-10-22 13:56:31,433 clothing change re-id INFO: Epoch[4] Iteration[50/75] Loss: 0.472, Acc: 0.881, Base Lr: 2.81e-04
+2020-10-22 13:56:33,482 clothing change re-id INFO: Epoch[4] Iteration[60/75] Loss: 0.474, Acc: 0.881, Base Lr: 2.81e-04
+2020-10-22 13:56:35,469 clothing change re-id INFO: Epoch[4] Iteration[70/75] Loss: 0.474, Acc: 0.878, Base Lr: 2.81e-04
+2020-10-22 13:56:36,455 clothing change re-id INFO: Epoch 4 done. Time per batch: 15.047[s] Speed: 638.0[samples/s]
+2020-10-22 13:56:36,456 clothing change re-id INFO: ----------
+2020-10-22 13:56:39,275 clothing change re-id INFO: Epoch[5] Iteration[10/75] Loss: 0.325, Acc: 0.926, Base Lr: 3.50e-04
+2020-10-22 13:56:41,323 clothing change re-id INFO: Epoch[5] Iteration[20/75] Loss: 0.345, Acc: 0.919, Base Lr: 3.50e-04
+2020-10-22 13:56:43,374 clothing change re-id INFO: Epoch[5] Iteration[30/75] Loss: 0.354, Acc: 0.913, Base Lr: 3.50e-04
+2020-10-22 13:56:45,425 clothing change re-id INFO: Epoch[5] Iteration[40/75] Loss: 0.371, Acc: 0.906, Base Lr: 3.50e-04
+2020-10-22 13:56:47,586 clothing change re-id INFO: Epoch[5] Iteration[50/75] Loss: 0.386, Acc: 0.902, Base Lr: 3.50e-04
+2020-10-22 13:56:49,635 clothing change re-id INFO: Epoch[5] Iteration[60/75] Loss: 0.401, Acc: 0.895, Base Lr: 3.50e-04
+2020-10-22 13:56:51,616 clothing change re-id INFO: Epoch[5] Iteration[70/75] Loss: 0.413, Acc: 0.891, Base Lr: 3.50e-04
+2020-10-22 13:56:52,600 clothing change re-id INFO: Epoch 5 done. Time per batch: 15.128[s] Speed: 634.6[samples/s]
+2020-10-22 13:56:52,600 clothing change re-id INFO: ----------
+2020-10-22 13:56:55,344 clothing change re-id INFO: Epoch[6] Iteration[10/75] Loss: 0.410, Acc: 0.885, Base Lr: 3.50e-04
+2020-10-22 13:56:57,395 clothing change re-id INFO: Epoch[6] Iteration[20/75] Loss: 0.395, Acc: 0.889, Base Lr: 3.50e-04
+2020-10-22 13:56:59,450 clothing change re-id INFO: Epoch[6] Iteration[30/75] Loss: 0.389, Acc: 0.891, Base Lr: 3.50e-04
+2020-10-22 13:57:01,573 clothing change re-id INFO: Epoch[6] Iteration[40/75] Loss: 0.383, Acc: 0.892, Base Lr: 3.50e-04
+2020-10-22 13:57:04,047 clothing change re-id INFO: Epoch[6] Iteration[50/75] Loss: 0.383, Acc: 0.891, Base Lr: 3.50e-04
+2020-10-22 13:57:06,107 clothing change re-id INFO: Epoch[6] Iteration[60/75] Loss: 0.383, Acc: 0.889, Base Lr: 3.50e-04
+2020-10-22 13:57:08,101 clothing change re-id INFO: Epoch[6] Iteration[70/75] Loss: 0.373, Acc: 0.892, Base Lr: 3.50e-04
+2020-10-22 13:57:09,280 clothing change re-id INFO: Epoch 6 done. Time per batch: 15.599[s] Speed: 615.4[samples/s]
+2020-10-22 13:57:09,280 clothing change re-id INFO: ----------
+2020-10-22 13:57:12,019 clothing change re-id INFO: Epoch[7] Iteration[10/75] Loss: 0.372, Acc: 0.886, Base Lr: 3.50e-04
+2020-10-22 13:57:14,079 clothing change re-id INFO: Epoch[7] Iteration[20/75] Loss: 0.350, Acc: 0.894, Base Lr: 3.50e-04
+2020-10-22 13:57:16,136 clothing change re-id INFO: Epoch[7] Iteration[30/75] Loss: 0.340, Acc: 0.898, Base Lr: 3.50e-04
+2020-10-22 13:57:18,225 clothing change re-id INFO: Epoch[7] Iteration[40/75] Loss: 0.336, Acc: 0.902, Base Lr: 3.50e-04
+2020-10-22 13:57:20,372 clothing change re-id INFO: Epoch[7] Iteration[50/75] Loss: 0.325, Acc: 0.907, Base Lr: 3.50e-04
+2020-10-22 13:57:22,432 clothing change re-id INFO: Epoch[7] Iteration[60/75] Loss: 0.321, Acc: 0.908, Base Lr: 3.50e-04
+2020-10-22 13:57:24,443 clothing change re-id INFO: Epoch[7] Iteration[70/75] Loss: 0.308, Acc: 0.912, Base Lr: 3.50e-04
+2020-10-22 13:57:25,435 clothing change re-id INFO: Epoch 7 done. Time per batch: 15.053[s] Speed: 637.8[samples/s]
+2020-10-22 13:57:25,435 clothing change re-id INFO: ----------
+2020-10-22 13:57:27,973 clothing change re-id INFO: Epoch[8] Iteration[10/75] Loss: 0.243, Acc: 0.925, Base Lr: 3.50e-04
+2020-10-22 13:57:30,085 clothing change re-id INFO: Epoch[8] Iteration[20/75] Loss: 0.242, Acc: 0.926, Base Lr: 3.50e-04
+2020-10-22 13:57:32,141 clothing change re-id INFO: Epoch[8] Iteration[30/75] Loss: 0.238, Acc: 0.927, Base Lr: 3.50e-04
+2020-10-22 13:57:34,201 clothing change re-id INFO: Epoch[8] Iteration[40/75] Loss: 0.238, Acc: 0.928, Base Lr: 3.50e-04
+2020-10-22 13:57:36,314 clothing change re-id INFO: Epoch[8] Iteration[50/75] Loss: 0.239, Acc: 0.929, Base Lr: 3.50e-04
+2020-10-22 13:57:38,428 clothing change re-id INFO: Epoch[8] Iteration[60/75] Loss: 0.239, Acc: 0.930, Base Lr: 3.50e-04
+2020-10-22 13:57:40,411 clothing change re-id INFO: Epoch[8] Iteration[70/75] Loss: 0.237, Acc: 0.931, Base Lr: 3.50e-04
+2020-10-22 13:57:41,400 clothing change re-id INFO: Epoch 8 done. Time per batch: 14.876[s] Speed: 645.3[samples/s]
+2020-10-22 13:57:41,400 clothing change re-id INFO: ----------
+2020-10-22 13:57:43,908 clothing change re-id INFO: Epoch[9] Iteration[10/75] Loss: 0.263, Acc: 0.927, Base Lr: 3.50e-04
+2020-10-22 13:57:45,994 clothing change re-id INFO: Epoch[9] Iteration[20/75] Loss: 0.250, Acc: 0.931, Base Lr: 3.50e-04
+2020-10-22 13:57:48,051 clothing change re-id INFO: Epoch[9] Iteration[30/75] Loss: 0.239, Acc: 0.933, Base Lr: 3.50e-04
+2020-10-22 13:57:50,124 clothing change re-id INFO: Epoch[9] Iteration[40/75] Loss: 0.233, Acc: 0.935, Base Lr: 3.50e-04
+2020-10-22 13:57:52,255 clothing change re-id INFO: Epoch[9] Iteration[50/75] Loss: 0.230, Acc: 0.936, Base Lr: 3.50e-04
+2020-10-22 13:57:54,345 clothing change re-id INFO: Epoch[9] Iteration[60/75] Loss: 0.224, Acc: 0.939, Base Lr: 3.50e-04
+2020-10-22 13:57:56,345 clothing change re-id INFO: Epoch[9] Iteration[70/75] Loss: 0.219, Acc: 0.941, Base Lr: 3.50e-04
+2020-10-22 13:57:57,342 clothing change re-id INFO: Epoch 9 done. Time per batch: 14.817[s] Speed: 647.9[samples/s]
+2020-10-22 13:57:57,342 clothing change re-id INFO: ----------
+2020-10-22 13:57:59,930 clothing change re-id INFO: Epoch[10] Iteration[10/75] Loss: 0.151, Acc: 0.958, Base Lr: 3.50e-04
+2020-10-22 13:58:02,018 clothing change re-id INFO: Epoch[10] Iteration[20/75] Loss: 0.153, Acc: 0.957, Base Lr: 3.50e-04
+2020-10-22 13:58:04,078 clothing change re-id INFO: Epoch[10] Iteration[30/75] Loss: 0.153, Acc: 0.958, Base Lr: 3.50e-04
+2020-10-22 13:58:06,165 clothing change re-id INFO: Epoch[10] Iteration[40/75] Loss: 0.157, Acc: 0.956, Base Lr: 3.50e-04
+2020-10-22 13:58:08,281 clothing change re-id INFO: Epoch[10] Iteration[50/75] Loss: 0.166, Acc: 0.953, Base Lr: 3.50e-04
+2020-10-22 13:58:10,365 clothing change re-id INFO: Epoch[10] Iteration[60/75] Loss: 0.174, Acc: 0.950, Base Lr: 3.50e-04
+2020-10-22 13:58:12,364 clothing change re-id INFO: Epoch[10] Iteration[70/75] Loss: 0.186, Acc: 0.947, Base Lr: 3.50e-04
+2020-10-22 13:58:13,586 clothing change re-id INFO: Epoch 10 done. Time per batch: 14.900[s] Speed: 644.3[samples/s]
+2020-10-22 13:58:13,586 clothing change re-id INFO: ----------
+2020-10-22 13:58:23,355 clothing change re-id INFO: Cloth Changing Validation Results - Epoch: 10
+2020-10-22 13:58:23,355 clothing change re-id INFO: mAP: 22.2%
+2020-10-22 13:58:23,355 clothing change re-id INFO: CMC curve, Rank-1  :53.5%
+2020-10-22 13:58:23,355 clothing change re-id INFO: CMC curve, Rank-5  :69.8%
+2020-10-22 13:58:23,355 clothing change re-id INFO: CMC curve, Rank-10 :77.5%
+2020-10-22 13:58:23,355 clothing change re-id INFO: CMC curve, Rank-50 :89.0%
+2020-10-22 13:58:32,407 clothing change re-id INFO: Standard Validation Results - Epoch: 10
+2020-10-22 13:58:32,407 clothing change re-id INFO: mAP: 19.9%
+2020-10-22 13:58:32,407 clothing change re-id INFO: CMC curve, Rank-1  :46.2%
+2020-10-22 13:58:32,407 clothing change re-id INFO: CMC curve, Rank-5  :61.3%
+2020-10-22 13:58:32,407 clothing change re-id INFO: CMC curve, Rank-10 :68.8%
+2020-10-22 13:58:32,407 clothing change re-id INFO: CMC curve, Rank-50 :84.4%
+2020-10-22 13:58:35,246 clothing change re-id INFO: Epoch[11] Iteration[10/75] Loss: 0.162, Acc: 0.951, Base Lr: 3.50e-04
+2020-10-22 13:58:37,293 clothing change re-id INFO: Epoch[11] Iteration[20/75] Loss: 0.171, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 13:58:39,338 clothing change re-id INFO: Epoch[11] Iteration[30/75] Loss: 0.175, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 13:58:41,389 clothing change re-id INFO: Epoch[11] Iteration[40/75] Loss: 0.183, Acc: 0.946, Base Lr: 3.50e-04
+2020-10-22 13:58:43,578 clothing change re-id INFO: Epoch[11] Iteration[50/75] Loss: 0.186, Acc: 0.946, Base Lr: 3.50e-04
+2020-10-22 13:58:45,633 clothing change re-id INFO: Epoch[11] Iteration[60/75] Loss: 0.190, Acc: 0.945, Base Lr: 3.50e-04
+2020-10-22 13:58:47,612 clothing change re-id INFO: Epoch[11] Iteration[70/75] Loss: 0.188, Acc: 0.945, Base Lr: 3.50e-04
+2020-10-22 13:58:48,600 clothing change re-id INFO: Epoch 11 done. Time per batch: 15.120[s] Speed: 634.9[samples/s]
+2020-10-22 13:58:48,600 clothing change re-id INFO: ----------
+2020-10-22 13:58:51,186 clothing change re-id INFO: Epoch[12] Iteration[10/75] Loss: 0.162, Acc: 0.946, Base Lr: 3.50e-04
+2020-10-22 13:58:53,245 clothing change re-id INFO: Epoch[12] Iteration[20/75] Loss: 0.159, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 13:58:55,305 clothing change re-id INFO: Epoch[12] Iteration[30/75] Loss: 0.164, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 13:58:57,417 clothing change re-id INFO: Epoch[12] Iteration[40/75] Loss: 0.162, Acc: 0.951, Base Lr: 3.50e-04
+2020-10-22 13:58:59,528 clothing change re-id INFO: Epoch[12] Iteration[50/75] Loss: 0.167, Acc: 0.951, Base Lr: 3.50e-04
+2020-10-22 13:59:01,590 clothing change re-id INFO: Epoch[12] Iteration[60/75] Loss: 0.167, Acc: 0.950, Base Lr: 3.50e-04
+2020-10-22 13:59:03,599 clothing change re-id INFO: Epoch[12] Iteration[70/75] Loss: 0.168, Acc: 0.950, Base Lr: 3.50e-04
+2020-10-22 13:59:04,591 clothing change re-id INFO: Epoch 12 done. Time per batch: 14.881[s] Speed: 645.1[samples/s]
+2020-10-22 13:59:04,591 clothing change re-id INFO: ----------
+2020-10-22 13:59:07,129 clothing change re-id INFO: Epoch[13] Iteration[10/75] Loss: 0.170, Acc: 0.947, Base Lr: 3.50e-04
+2020-10-22 13:59:09,209 clothing change re-id INFO: Epoch[13] Iteration[20/75] Loss: 0.166, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 13:59:11,328 clothing change re-id INFO: Epoch[13] Iteration[30/75] Loss: 0.167, Acc: 0.950, Base Lr: 3.50e-04
+2020-10-22 13:59:13,391 clothing change re-id INFO: Epoch[13] Iteration[40/75] Loss: 0.160, Acc: 0.953, Base Lr: 3.50e-04
+2020-10-22 13:59:15,507 clothing change re-id INFO: Epoch[13] Iteration[50/75] Loss: 0.155, Acc: 0.954, Base Lr: 3.50e-04
+2020-10-22 13:59:17,570 clothing change re-id INFO: Epoch[13] Iteration[60/75] Loss: 0.156, Acc: 0.954, Base Lr: 3.50e-04
+2020-10-22 13:59:19,615 clothing change re-id INFO: Epoch[13] Iteration[70/75] Loss: 0.161, Acc: 0.953, Base Lr: 3.50e-04
+2020-10-22 13:59:20,600 clothing change re-id INFO: Epoch 13 done. Time per batch: 14.887[s] Speed: 644.8[samples/s]
+2020-10-22 13:59:20,600 clothing change re-id INFO: ----------
+2020-10-22 13:59:23,191 clothing change re-id INFO: Epoch[14] Iteration[10/75] Loss: 0.139, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 13:59:25,254 clothing change re-id INFO: Epoch[14] Iteration[20/75] Loss: 0.144, Acc: 0.964, Base Lr: 3.50e-04
+2020-10-22 13:59:27,312 clothing change re-id INFO: Epoch[14] Iteration[30/75] Loss: 0.150, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 13:59:29,387 clothing change re-id INFO: Epoch[14] Iteration[40/75] Loss: 0.150, Acc: 0.961, Base Lr: 3.50e-04
+2020-10-22 13:59:31,547 clothing change re-id INFO: Epoch[14] Iteration[50/75] Loss: 0.149, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 13:59:33,610 clothing change re-id INFO: Epoch[14] Iteration[60/75] Loss: 0.148, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 13:59:35,611 clothing change re-id INFO: Epoch[14] Iteration[70/75] Loss: 0.148, Acc: 0.961, Base Lr: 3.50e-04
+2020-10-22 13:59:36,604 clothing change re-id INFO: Epoch 14 done. Time per batch: 14.882[s] Speed: 645.1[samples/s]
+2020-10-22 13:59:36,604 clothing change re-id INFO: ----------
+2020-10-22 13:59:39,073 clothing change re-id INFO: Epoch[15] Iteration[10/75] Loss: 0.156, Acc: 0.961, Base Lr: 3.50e-04
+2020-10-22 13:59:41,226 clothing change re-id INFO: Epoch[15] Iteration[20/75] Loss: 0.157, Acc: 0.960, Base Lr: 3.50e-04
+2020-10-22 13:59:43,297 clothing change re-id INFO: Epoch[15] Iteration[30/75] Loss: 0.161, Acc: 0.959, Base Lr: 3.50e-04
+2020-10-22 13:59:45,343 clothing change re-id INFO: Epoch[15] Iteration[40/75] Loss: 0.157, Acc: 0.959, Base Lr: 3.50e-04
+2020-10-22 13:59:47,420 clothing change re-id INFO: Epoch[15] Iteration[50/75] Loss: 0.156, Acc: 0.959, Base Lr: 3.50e-04
+2020-10-22 13:59:49,563 clothing change re-id INFO: Epoch[15] Iteration[60/75] Loss: 0.152, Acc: 0.960, Base Lr: 3.50e-04
+2020-10-22 13:59:51,555 clothing change re-id INFO: Epoch[15] Iteration[70/75] Loss: 0.158, Acc: 0.956, Base Lr: 3.50e-04
+2020-10-22 13:59:52,547 clothing change re-id INFO: Epoch 15 done. Time per batch: 14.864[s] Speed: 645.9[samples/s]
+2020-10-22 13:59:52,547 clothing change re-id INFO: ----------
+2020-10-22 13:59:55,283 clothing change re-id INFO: Epoch[16] Iteration[10/75] Loss: 0.093, Acc: 0.985, Base Lr: 3.50e-04
+2020-10-22 13:59:57,340 clothing change re-id INFO: Epoch[16] Iteration[20/75] Loss: 0.101, Acc: 0.981, Base Lr: 3.50e-04
+2020-10-22 13:59:59,396 clothing change re-id INFO: Epoch[16] Iteration[30/75] Loss: 0.114, Acc: 0.975, Base Lr: 3.50e-04
+2020-10-22 14:00:01,468 clothing change re-id INFO: Epoch[16] Iteration[40/75] Loss: 0.118, Acc: 0.972, Base Lr: 3.50e-04
+2020-10-22 14:00:03,628 clothing change re-id INFO: Epoch[16] Iteration[50/75] Loss: 0.122, Acc: 0.970, Base Lr: 3.50e-04
+2020-10-22 14:00:05,690 clothing change re-id INFO: Epoch[16] Iteration[60/75] Loss: 0.125, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:00:07,690 clothing change re-id INFO: Epoch[16] Iteration[70/75] Loss: 0.130, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:00:08,688 clothing change re-id INFO: Epoch 16 done. Time per batch: 15.055[s] Speed: 637.7[samples/s]
+2020-10-22 14:00:08,688 clothing change re-id INFO: ----------
+2020-10-22 14:00:11,403 clothing change re-id INFO: Epoch[17] Iteration[10/75] Loss: 0.189, Acc: 0.954, Base Lr: 3.50e-04
+2020-10-22 14:00:13,461 clothing change re-id INFO: Epoch[17] Iteration[20/75] Loss: 0.183, Acc: 0.956, Base Lr: 3.50e-04
+2020-10-22 14:00:15,522 clothing change re-id INFO: Epoch[17] Iteration[30/75] Loss: 0.173, Acc: 0.957, Base Lr: 3.50e-04
+2020-10-22 14:00:17,637 clothing change re-id INFO: Epoch[17] Iteration[40/75] Loss: 0.162, Acc: 0.959, Base Lr: 3.50e-04
+2020-10-22 14:00:19,762 clothing change re-id INFO: Epoch[17] Iteration[50/75] Loss: 0.154, Acc: 0.960, Base Lr: 3.50e-04
+2020-10-22 14:00:21,828 clothing change re-id INFO: Epoch[17] Iteration[60/75] Loss: 0.146, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 14:00:23,839 clothing change re-id INFO: Epoch[17] Iteration[70/75] Loss: 0.142, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:00:24,825 clothing change re-id INFO: Epoch 17 done. Time per batch: 15.060[s] Speed: 637.5[samples/s]
+2020-10-22 14:00:24,825 clothing change re-id INFO: ----------
+2020-10-22 14:00:27,287 clothing change re-id INFO: Epoch[18] Iteration[10/75] Loss: 0.180, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:00:29,419 clothing change re-id INFO: Epoch[18] Iteration[20/75] Loss: 0.167, Acc: 0.964, Base Lr: 3.50e-04
+2020-10-22 14:00:31,477 clothing change re-id INFO: Epoch[18] Iteration[30/75] Loss: 0.162, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:00:33,549 clothing change re-id INFO: Epoch[18] Iteration[40/75] Loss: 0.156, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:00:35,640 clothing change re-id INFO: Epoch[18] Iteration[50/75] Loss: 0.152, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 14:00:37,771 clothing change re-id INFO: Epoch[18] Iteration[60/75] Loss: 0.148, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:00:39,773 clothing change re-id INFO: Epoch[18] Iteration[70/75] Loss: 0.141, Acc: 0.965, Base Lr: 3.50e-04
+2020-10-22 14:00:40,765 clothing change re-id INFO: Epoch 18 done. Time per batch: 14.856[s] Speed: 646.2[samples/s]
+2020-10-22 14:00:40,765 clothing change re-id INFO: ----------
+2020-10-22 14:00:43,300 clothing change re-id INFO: Epoch[19] Iteration[10/75] Loss: 0.066, Acc: 0.981, Base Lr: 3.50e-04
+2020-10-22 14:00:45,359 clothing change re-id INFO: Epoch[19] Iteration[20/75] Loss: 0.073, Acc: 0.980, Base Lr: 3.50e-04
+2020-10-22 14:00:47,445 clothing change re-id INFO: Epoch[19] Iteration[30/75] Loss: 0.085, Acc: 0.976, Base Lr: 3.50e-04
+2020-10-22 14:00:49,529 clothing change re-id INFO: Epoch[19] Iteration[40/75] Loss: 0.092, Acc: 0.975, Base Lr: 3.50e-04
+2020-10-22 14:00:51,649 clothing change re-id INFO: Epoch[19] Iteration[50/75] Loss: 0.097, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:00:53,714 clothing change re-id INFO: Epoch[19] Iteration[60/75] Loss: 0.101, Acc: 0.973, Base Lr: 3.50e-04
+2020-10-22 14:00:55,744 clothing change re-id INFO: Epoch[19] Iteration[70/75] Loss: 0.109, Acc: 0.971, Base Lr: 3.50e-04
+2020-10-22 14:00:56,739 clothing change re-id INFO: Epoch 19 done. Time per batch: 14.847[s] Speed: 646.6[samples/s]
+2020-10-22 14:00:56,739 clothing change re-id INFO: ----------
+2020-10-22 14:00:59,341 clothing change re-id INFO: Epoch[20] Iteration[10/75] Loss: 0.057, Acc: 0.994, Base Lr: 3.50e-04
+2020-10-22 14:01:01,430 clothing change re-id INFO: Epoch[20] Iteration[20/75] Loss: 0.072, Acc: 0.988, Base Lr: 3.50e-04
+2020-10-22 14:01:03,492 clothing change re-id INFO: Epoch[20] Iteration[30/75] Loss: 0.079, Acc: 0.984, Base Lr: 3.50e-04
+2020-10-22 14:01:05,632 clothing change re-id INFO: Epoch[20] Iteration[40/75] Loss: 0.095, Acc: 0.978, Base Lr: 3.50e-04
+2020-10-22 14:01:07,705 clothing change re-id INFO: Epoch[20] Iteration[50/75] Loss: 0.104, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:01:09,799 clothing change re-id INFO: Epoch[20] Iteration[60/75] Loss: 0.113, Acc: 0.970, Base Lr: 3.50e-04
+2020-10-22 14:01:11,816 clothing change re-id INFO: Epoch[20] Iteration[70/75] Loss: 0.117, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:01:13,044 clothing change re-id INFO: Epoch 20 done. Time per batch: 14.960[s] Speed: 641.7[samples/s]
+2020-10-22 14:01:13,044 clothing change re-id INFO: ----------
+2020-10-22 14:01:22,141 clothing change re-id INFO: Cloth Changing Validation Results - Epoch: 20
+2020-10-22 14:01:22,141 clothing change re-id INFO: mAP: 21.2%
+2020-10-22 14:01:22,141 clothing change re-id INFO: CMC curve, Rank-1  :55.6%
+2020-10-22 14:01:22,141 clothing change re-id INFO: CMC curve, Rank-5  :72.2%
+2020-10-22 14:01:22,141 clothing change re-id INFO: CMC curve, Rank-10 :79.1%
+2020-10-22 14:01:22,141 clothing change re-id INFO: CMC curve, Rank-50 :91.9%
+2020-10-22 14:01:31,148 clothing change re-id INFO: Standard Validation Results - Epoch: 20
+2020-10-22 14:01:31,149 clothing change re-id INFO: mAP: 18.9%
+2020-10-22 14:01:31,149 clothing change re-id INFO: CMC curve, Rank-1  :47.5%
+2020-10-22 14:01:31,149 clothing change re-id INFO: CMC curve, Rank-5  :63.9%
+2020-10-22 14:01:31,149 clothing change re-id INFO: CMC curve, Rank-10 :70.4%
+2020-10-22 14:01:31,149 clothing change re-id INFO: CMC curve, Rank-50 :84.6%
+2020-10-22 14:01:33,732 clothing change re-id INFO: Epoch[21] Iteration[10/75] Loss: 0.090, Acc: 0.982, Base Lr: 3.50e-04
+2020-10-22 14:01:35,799 clothing change re-id INFO: Epoch[21] Iteration[20/75] Loss: 0.101, Acc: 0.978, Base Lr: 3.50e-04
+2020-10-22 14:01:37,856 clothing change re-id INFO: Epoch[21] Iteration[30/75] Loss: 0.110, Acc: 0.975, Base Lr: 3.50e-04
+2020-10-22 14:01:39,950 clothing change re-id INFO: Epoch[21] Iteration[40/75] Loss: 0.113, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:01:42,061 clothing change re-id INFO: Epoch[21] Iteration[50/75] Loss: 0.114, Acc: 0.972, Base Lr: 3.50e-04
+2020-10-22 14:01:44,132 clothing change re-id INFO: Epoch[21] Iteration[60/75] Loss: 0.116, Acc: 0.970, Base Lr: 3.50e-04
+2020-10-22 14:01:46,128 clothing change re-id INFO: Epoch[21] Iteration[70/75] Loss: 0.120, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:01:47,121 clothing change re-id INFO: Epoch 21 done. Time per batch: 14.827[s] Speed: 647.5[samples/s]
+2020-10-22 14:01:47,121 clothing change re-id INFO: ----------
+2020-10-22 14:01:49,698 clothing change re-id INFO: Epoch[22] Iteration[10/75] Loss: 0.122, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:01:51,795 clothing change re-id INFO: Epoch[22] Iteration[20/75] Loss: 0.120, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:01:53,850 clothing change re-id INFO: Epoch[22] Iteration[30/75] Loss: 0.119, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:01:55,907 clothing change re-id INFO: Epoch[22] Iteration[40/75] Loss: 0.124, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:01:58,031 clothing change re-id INFO: Epoch[22] Iteration[50/75] Loss: 0.125, Acc: 0.966, Base Lr: 3.50e-04
+2020-10-22 14:02:00,128 clothing change re-id INFO: Epoch[22] Iteration[60/75] Loss: 0.126, Acc: 0.965, Base Lr: 3.50e-04
+2020-10-22 14:02:02,102 clothing change re-id INFO: Epoch[22] Iteration[70/75] Loss: 0.130, Acc: 0.964, Base Lr: 3.50e-04
+2020-10-22 14:02:03,088 clothing change re-id INFO: Epoch 22 done. Time per batch: 14.844[s] Speed: 646.7[samples/s]
+2020-10-22 14:02:03,089 clothing change re-id INFO: ----------
+2020-10-22 14:02:05,591 clothing change re-id INFO: Epoch[23] Iteration[10/75] Loss: 0.111, Acc: 0.976, Base Lr: 3.50e-04
+2020-10-22 14:02:07,679 clothing change re-id INFO: Epoch[23] Iteration[20/75] Loss: 0.110, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:02:09,768 clothing change re-id INFO: Epoch[23] Iteration[30/75] Loss: 0.107, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:02:11,872 clothing change re-id INFO: Epoch[23] Iteration[40/75] Loss: 0.108, Acc: 0.973, Base Lr: 3.50e-04
+2020-10-22 14:02:14,001 clothing change re-id INFO: Epoch[23] Iteration[50/75] Loss: 0.109, Acc: 0.971, Base Lr: 3.50e-04
+2020-10-22 14:02:16,143 clothing change re-id INFO: Epoch[23] Iteration[60/75] Loss: 0.113, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:02:18,216 clothing change re-id INFO: Epoch[23] Iteration[70/75] Loss: 0.118, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:02:19,214 clothing change re-id INFO: Epoch 23 done. Time per batch: 14.957[s] Speed: 641.9[samples/s]
+2020-10-22 14:02:19,214 clothing change re-id INFO: ----------
+2020-10-22 14:02:21,711 clothing change re-id INFO: Epoch[24] Iteration[10/75] Loss: 0.179, Acc: 0.947, Base Lr: 3.50e-04
+2020-10-22 14:02:23,800 clothing change re-id INFO: Epoch[24] Iteration[20/75] Loss: 0.176, Acc: 0.948, Base Lr: 3.50e-04
+2020-10-22 14:02:25,861 clothing change re-id INFO: Epoch[24] Iteration[30/75] Loss: 0.171, Acc: 0.949, Base Lr: 3.50e-04
+2020-10-22 14:02:27,980 clothing change re-id INFO: Epoch[24] Iteration[40/75] Loss: 0.166, Acc: 0.952, Base Lr: 3.50e-04
+2020-10-22 14:02:30,080 clothing change re-id INFO: Epoch[24] Iteration[50/75] Loss: 0.159, Acc: 0.954, Base Lr: 3.50e-04
+2020-10-22 14:02:32,155 clothing change re-id INFO: Epoch[24] Iteration[60/75] Loss: 0.152, Acc: 0.957, Base Lr: 3.50e-04
+2020-10-22 14:02:34,167 clothing change re-id INFO: Epoch[24] Iteration[70/75] Loss: 0.146, Acc: 0.958, Base Lr: 3.50e-04
+2020-10-22 14:02:35,161 clothing change re-id INFO: Epoch 24 done. Time per batch: 14.857[s] Speed: 646.2[samples/s]
+2020-10-22 14:02:35,161 clothing change re-id INFO: ----------
+2020-10-22 14:02:37,723 clothing change re-id INFO: Epoch[25] Iteration[10/75] Loss: 0.039, Acc: 0.994, Base Lr: 3.50e-04
+2020-10-22 14:02:39,788 clothing change re-id INFO: Epoch[25] Iteration[20/75] Loss: 0.055, Acc: 0.990, Base Lr: 3.50e-04
+2020-10-22 14:02:41,853 clothing change re-id INFO: Epoch[25] Iteration[30/75] Loss: 0.066, Acc: 0.986, Base Lr: 3.50e-04
+2020-10-22 14:02:43,944 clothing change re-id INFO: Epoch[25] Iteration[40/75] Loss: 0.073, Acc: 0.984, Base Lr: 3.50e-04
+2020-10-22 14:02:46,093 clothing change re-id INFO: Epoch[25] Iteration[50/75] Loss: 0.084, Acc: 0.980, Base Lr: 3.50e-04
+2020-10-22 14:02:48,157 clothing change re-id INFO: Epoch[25] Iteration[60/75] Loss: 0.086, Acc: 0.979, Base Lr: 3.50e-04
+2020-10-22 14:02:50,173 clothing change re-id INFO: Epoch[25] Iteration[70/75] Loss: 0.091, Acc: 0.978, Base Lr: 3.50e-04
+2020-10-22 14:02:51,162 clothing change re-id INFO: Epoch 25 done. Time per batch: 14.859[s] Speed: 646.1[samples/s]
+2020-10-22 14:02:51,163 clothing change re-id INFO: ----------
+2020-10-22 14:02:53,691 clothing change re-id INFO: Epoch[26] Iteration[10/75] Loss: 0.101, Acc: 0.962, Base Lr: 3.50e-04
+2020-10-22 14:02:55,752 clothing change re-id INFO: Epoch[26] Iteration[20/75] Loss: 0.105, Acc: 0.963, Base Lr: 3.50e-04
+2020-10-22 14:02:57,817 clothing change re-id INFO: Epoch[26] Iteration[30/75] Loss: 0.105, Acc: 0.964, Base Lr: 3.50e-04
+2020-10-22 14:02:59,902 clothing change re-id INFO: Epoch[26] Iteration[40/75] Loss: 0.106, Acc: 0.965, Base Lr: 3.50e-04
+2020-10-22 14:03:02,161 clothing change re-id INFO: Epoch[26] Iteration[50/75] Loss: 0.110, Acc: 0.966, Base Lr: 3.50e-04
+2020-10-22 14:03:04,318 clothing change re-id INFO: Epoch[26] Iteration[60/75] Loss: 0.112, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:03:06,321 clothing change re-id INFO: Epoch[26] Iteration[70/75] Loss: 0.111, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:03:07,324 clothing change re-id INFO: Epoch 26 done. Time per batch: 15.049[s] Speed: 637.9[samples/s]
+2020-10-22 14:03:07,325 clothing change re-id INFO: ----------
+2020-10-22 14:03:09,857 clothing change re-id INFO: Epoch[27] Iteration[10/75] Loss: 0.042, Acc: 0.995, Base Lr: 3.50e-04
+2020-10-22 14:03:11,973 clothing change re-id INFO: Epoch[27] Iteration[20/75] Loss: 0.054, Acc: 0.991, Base Lr: 3.50e-04
+2020-10-22 14:03:14,042 clothing change re-id INFO: Epoch[27] Iteration[30/75] Loss: 0.064, Acc: 0.987, Base Lr: 3.50e-04
+2020-10-22 14:03:16,137 clothing change re-id INFO: Epoch[27] Iteration[40/75] Loss: 0.076, Acc: 0.984, Base Lr: 3.50e-04
+2020-10-22 14:03:18,252 clothing change re-id INFO: Epoch[27] Iteration[50/75] Loss: 0.080, Acc: 0.981, Base Lr: 3.50e-04
+2020-10-22 14:03:20,437 clothing change re-id INFO: Epoch[27] Iteration[60/75] Loss: 0.088, Acc: 0.978, Base Lr: 3.50e-04
+2020-10-22 14:03:22,483 clothing change re-id INFO: Epoch[27] Iteration[70/75] Loss: 0.088, Acc: 0.979, Base Lr: 3.50e-04
+2020-10-22 14:03:23,478 clothing change re-id INFO: Epoch 27 done. Time per batch: 14.997[s] Speed: 640.1[samples/s]
+2020-10-22 14:03:23,479 clothing change re-id INFO: ----------
+2020-10-22 14:03:26,283 clothing change re-id INFO: Epoch[28] Iteration[10/75] Loss: 0.090, Acc: 0.981, Base Lr: 3.50e-04
+2020-10-22 14:03:28,358 clothing change re-id INFO: Epoch[28] Iteration[20/75] Loss: 0.098, Acc: 0.976, Base Lr: 3.50e-04
+2020-10-22 14:03:30,423 clothing change re-id INFO: Epoch[28] Iteration[30/75] Loss: 0.105, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:03:32,497 clothing change re-id INFO: Epoch[28] Iteration[40/75] Loss: 0.112, Acc: 0.972, Base Lr: 3.50e-04
+2020-10-22 14:03:34,649 clothing change re-id INFO: Epoch[28] Iteration[50/75] Loss: 0.118, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:03:36,717 clothing change re-id INFO: Epoch[28] Iteration[60/75] Loss: 0.119, Acc: 0.969, Base Lr: 3.50e-04
+2020-10-22 14:03:38,776 clothing change re-id INFO: Epoch[28] Iteration[70/75] Loss: 0.118, Acc: 0.970, Base Lr: 3.50e-04
+2020-10-22 14:03:39,768 clothing change re-id INFO: Epoch 28 done. Time per batch: 15.213[s] Speed: 631.0[samples/s]
+2020-10-22 14:03:39,768 clothing change re-id INFO: ----------
+2020-10-22 14:03:42,432 clothing change re-id INFO: Epoch[29] Iteration[10/75] Loss: 0.103, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:03:44,488 clothing change re-id INFO: Epoch[29] Iteration[20/75] Loss: 0.106, Acc: 0.974, Base Lr: 3.50e-04
+2020-10-22 14:03:46,544 clothing change re-id INFO: Epoch[29] Iteration[30/75] Loss: 0.110, Acc: 0.972, Base Lr: 3.50e-04
+2020-10-22 14:03:48,629 clothing change re-id INFO: Epoch[29] Iteration[40/75] Loss: 0.117, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:03:50,774 clothing change re-id INFO: Epoch[29] Iteration[50/75] Loss: 0.120, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:03:52,830 clothing change re-id INFO: Epoch[29] Iteration[60/75] Loss: 0.120, Acc: 0.968, Base Lr: 3.50e-04
+2020-10-22 14:03:54,836 clothing change re-id INFO: Epoch[29] Iteration[70/75] Loss: 0.121, Acc: 0.967, Base Lr: 3.50e-04
+2020-10-22 14:03:55,820 clothing change re-id INFO: Epoch 29 done. Time per batch: 14.921[s] Speed: 643.4[samples/s]
+2020-10-22 14:03:55,820 clothing change re-id INFO: ----------
+2020-10-22 14:03:58,416 clothing change re-id INFO: Epoch[30] Iteration[10/75] Loss: 0.083, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:00,518 clothing change re-id INFO: Epoch[30] Iteration[20/75] Loss: 0.082, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:02,574 clothing change re-id INFO: Epoch[30] Iteration[30/75] Loss: 0.081, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:04,670 clothing change re-id INFO: Epoch[30] Iteration[40/75] Loss: 0.080, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:06,767 clothing change re-id INFO: Epoch[30] Iteration[50/75] Loss: 0.078, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:08,859 clothing change re-id INFO: Epoch[30] Iteration[60/75] Loss: 0.078, Acc: 0.982, Base Lr: 3.50e-05
+2020-10-22 14:04:10,862 clothing change re-id INFO: Epoch[30] Iteration[70/75] Loss: 0.075, Acc: 0.984, Base Lr: 3.50e-05
+2020-10-22 14:04:12,081 clothing change re-id INFO: Epoch 30 done. Time per batch: 14.894[s] Speed: 644.5[samples/s]
+2020-10-22 14:04:12,081 clothing change re-id INFO: ----------
+2020-10-22 14:04:21,044 clothing change re-id INFO: Cloth Changing Validation Results - Epoch: 30
+2020-10-22 14:04:21,044 clothing change re-id INFO: mAP: 25.3%
+2020-10-22 14:04:21,044 clothing change re-id INFO: CMC curve, Rank-1  :57.4%
+2020-10-22 14:04:21,044 clothing change re-id INFO: CMC curve, Rank-5  :73.4%
+2020-10-22 14:04:21,044 clothing change re-id INFO: CMC curve, Rank-10 :79.7%
+2020-10-22 14:04:21,044 clothing change re-id INFO: CMC curve, Rank-50 :90.5%
+2020-10-22 14:04:29,986 clothing change re-id INFO: Standard Validation Results - Epoch: 30
+2020-10-22 14:04:29,986 clothing change re-id INFO: mAP: 22.5%
+2020-10-22 14:04:29,986 clothing change re-id INFO: CMC curve, Rank-1  :49.3%
+2020-10-22 14:04:29,986 clothing change re-id INFO: CMC curve, Rank-5  :65.3%
+2020-10-22 14:04:29,986 clothing change re-id INFO: CMC curve, Rank-10 :72.0%
+2020-10-22 14:04:29,986 clothing change re-id INFO: CMC curve, Rank-50 :85.0%
+2020-10-22 14:04:32,768 clothing change re-id INFO: Epoch[31] Iteration[10/75] Loss: 0.048, Acc: 0.985, Base Lr: 3.50e-05
+2020-10-22 14:04:34,814 clothing change re-id INFO: Epoch[31] Iteration[20/75] Loss: 0.047, Acc: 0.987, Base Lr: 3.50e-05
+2020-10-22 14:04:36,863 clothing change re-id INFO: Epoch[31] Iteration[30/75] Loss: 0.047, Acc: 0.987, Base Lr: 3.50e-05
+2020-10-22 14:04:38,941 clothing change re-id INFO: Epoch[31] Iteration[40/75] Loss: 0.046, Acc: 0.988, Base Lr: 3.50e-05
+2020-10-22 14:04:41,076 clothing change re-id INFO: Epoch[31] Iteration[50/75] Loss: 0.046, Acc: 0.988, Base Lr: 3.50e-05
+2020-10-22 14:04:43,127 clothing change re-id INFO: Epoch[31] Iteration[60/75] Loss: 0.049, Acc: 0.987, Base Lr: 3.50e-05
+2020-10-22 14:04:45,117 clothing change re-id INFO: Epoch[31] Iteration[70/75] Loss: 0.046, Acc: 0.988, Base Lr: 3.50e-05
+2020-10-22 14:04:46,097 clothing change re-id INFO: Epoch 31 done. Time per batch: 15.013[s] Speed: 639.4[samples/s]
+2020-10-22 14:04:46,097 clothing change re-id INFO: ----------
+2020-10-22 14:04:48,738 clothing change re-id INFO: Epoch[32] Iteration[10/75] Loss: 0.043, Acc: 0.992, Base Lr: 3.50e-05
+2020-10-22 14:04:50,841 clothing change re-id INFO: Epoch[32] Iteration[20/75] Loss: 0.041, Acc: 0.993, Base Lr: 3.50e-05
+2020-10-22 14:04:52,895 clothing change re-id INFO: Epoch[32] Iteration[30/75] Loss: 0.041, Acc: 0.993, Base Lr: 3.50e-05
+2020-10-22 14:04:54,948 clothing change re-id INFO: Epoch[32] Iteration[40/75] Loss: 0.039, Acc: 0.993, Base Lr: 3.50e-05
+2020-10-22 14:04:57,072 clothing change re-id INFO: Epoch[32] Iteration[50/75] Loss: 0.039, Acc: 0.993, Base Lr: 3.50e-05
+2020-10-22 14:04:59,165 clothing change re-id INFO: Epoch[32] Iteration[60/75] Loss: 0.038, Acc: 0.993, Base Lr: 3.50e-05
+2020-10-22 14:05:01,142 clothing change re-id INFO: Epoch[32] Iteration[70/75] Loss: 0.040, Acc: 0.992, Base Lr: 3.50e-05
+2020-10-22 14:05:02,124 clothing change re-id INFO: Epoch 32 done. Time per batch: 14.924[s] Speed: 643.3[samples/s]
+2020-10-22 14:05:02,124 clothing change re-id INFO: ----------
+2020-10-22 14:05:04,650 clothing change re-id INFO: Epoch[33] Iteration[10/75] Loss: 0.021, Acc: 0.999, Base Lr: 3.50e-05
+2020-10-22 14:05:06,735 clothing change re-id INFO: Epoch[33] Iteration[20/75] Loss: 0.023, Acc: 0.998, Base Lr: 3.50e-05
+2020-10-22 14:05:08,799 clothing change re-id INFO: Epoch[33] Iteration[30/75] Loss: 0.026, Acc: 0.997, Base Lr: 3.50e-05
+2020-10-22 14:05:10,895 clothing change re-id INFO: Epoch[33] Iteration[40/75] Loss: 0.027, Acc: 0.997, Base Lr: 3.50e-05
+2020-10-22 14:05:12,992 clothing change re-id INFO: Epoch[33] Iteration[50/75] Loss: 0.028, Acc: 0.996, Base Lr: 3.50e-05
+2020-10-22 14:05:15,059 clothing change re-id INFO: Epoch[33] Iteration[60/75] Loss: 0.029, Acc: 0.996, Base Lr: 3.50e-05
+2020-10-22 14:05:17,076 clothing change re-id INFO: Epoch[33] Iteration[70/75] Loss: 0.031, Acc: 0.995, Base Lr: 3.50e-05
+2020-10-22 14:05:18,064 clothing change re-id INFO: Epoch 33 done. Time per batch: 14.811[s] Speed: 648.2[samples/s]
+2020-10-22 14:05:18,064 clothing change re-id INFO: ----------
+2020-10-22 14:05:20,803 clothing change re-id INFO: Epoch[34] Iteration[10/75] Loss: 0.024, Acc: 0.999, Base Lr: 3.50e-05
+2020-10-22 14:05:22,857 clothing change re-id INFO: Epoch[34] Iteration[20/75] Loss: 0.026, Acc: 0.998, Base Lr: 3.50e-05
+2020-10-22 14:05:24,910 clothing change re-id INFO: Epoch[34] Iteration[30/75] Loss: 0.026, Acc: 0.997, Base Lr: 3.50e-05
+2020-10-22 14:05:27,010 clothing change re-id INFO: Epoch[34] Iteration[40/75] Loss: 0.030, Acc: 0.996, Base Lr: 3.50e-05
+2020-10-22 14:05:29,130 clothing change re-id INFO: Epoch[34] Iteration[50/75] Loss: 0.030, Acc: 0.996, Base Lr: 3.50e-05
+2020-10-22 14:05:31,184 clothing change re-id INFO: Epoch[34] Iteration[60/75] Loss: 0.030, Acc: 0.995, Base Lr: 3.50e-05
+2020-10-22 14:05:33,206 clothing change re-id INFO: Epoch[34] Iteration[70/75] Loss: 0.030, Acc: 0.995, Base Lr: 3.50e-05
+2020-10-22 14:05:34,194 clothing change re-id INFO: Epoch 34 done. Time per batch: 15.046[s] Speed: 638.1[samples/s]
+2020-10-22 14:05:34,194 clothing change re-id INFO: ----------
+2020-10-22 14:05:36,853 clothing change re-id INFO: Epoch[35] Iteration[10/75] Loss: 0.021, Acc: 0.999, Base Lr: 3.50e-05
+2020-10-22 14:05:39,002 clothing change re-id INFO: Epoch[35] Iteration[20/75] Loss: 0.022, Acc: 0.998, Base Lr: 3.50e-05
+2020-10-22 14:05:41,119 clothing change re-id INFO: Epoch[35] Iteration[30/75] Loss: 0.023, Acc: 0.997, Base Lr: 3.50e-05
+2020-10-22 14:05:43,309 clothing change re-id INFO: Epoch[35] Iteration[40/75] Loss: 0.024, Acc: 0.996, Base Lr: 3.50e-05
+2020-10-22 14:05:45,467 clothing change re-id INFO: Epoch[35] Iteration[50/75] Loss: 0.023, Acc: 0.996, Base Lr: 3.50e-05
